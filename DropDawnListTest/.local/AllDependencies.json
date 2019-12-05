@@ -1604,14 +1604,14 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MI\\.nuget\\packages\\": {}
+    "C:\\Users\\D.Drozdov\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "DropDawnListTest",
       "projectName": "DropDawnListTest",
       "projectPath": "C:\\ROBOTS\\GISRobo\\DropDawnListTest\\.local",
-      "packagesPath": "C:\\Users\\MI\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\D.Drozdov\\.nuget\\packages\\",
       "outputPath": "C:\\ROBOTS\\GISRobo\\DropDawnListTest\\.local"
     },
     "frameworks": {
