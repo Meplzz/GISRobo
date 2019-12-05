@@ -80,7 +80,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="dbd0ed86093d2a810ce168caeb2c536e" Selector="&lt;html app='chrome.exe' title='Service Manager' /&gt;&lt;webctrl id='ext-gen-top***' tag='BUTTON' innertext='Поиск обращений' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="dbd0ed86093d2a810ce168caeb2c536e" Selector="&lt;html app='chrome.exe' title='Service Manager' /&gt;&lt;webctrl aaname='Поиск обращений' innertext='Поиск обращений' idx='3' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
