@@ -86,7 +86,7 @@
         <InArgument x:TypeArguments="x:Boolean">[String.IsNullOrEmpty(CheckEmptyFile)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="797,169" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Создаем условие, которое в зависимости от состояния файла с параметрами поиска запрашивает от пользователя определенные действия:&#xD;&#xA;1) если параметры есть - выбрать нужные&#xD;&#xA;2) если параметров нет - просит указать и затем выбрать нужные" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="797,169" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Создаем условие, которое в зависимости от состояния файла с параметрами поиска запрашивает от пользователя определенные действия:&#xA;1) если параметры есть - выбрать нужные&#xA;2) если параметров нет - просит указать и затем выбрать нужные" />
     <If Condition="[BooleanResult = True]" sap:VirtualizedContainerService.HintSize="797,1240" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="376,1092" sap2010:WorkflowViewState.IdRef="Sequence_2">
