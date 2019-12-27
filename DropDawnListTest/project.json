@@ -3,6 +3,7 @@
   "description": "Пустой процесс",
   "main": "MainProcessGIS.xaml",
   "dependencies": {
+    "UiPath.Database.Activities": "[1.2.6863.32528]",
     "UiPath.Excel.Activities": "[2.7.2]",
     "UiPath.Mail.Activities": "[1.7.2]",
     "UiPath.System.Activities": "[19.10.1]",

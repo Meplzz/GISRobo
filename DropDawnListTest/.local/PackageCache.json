@@ -108,6 +108,18 @@
         "C:\\Users\\D.Drozdov\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.Tesseract.dll",
         "C:\\Users\\D.Drozdov\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.dll"
       ]
+    },
+    {
+      "Package": {
+        "Id": "UiPath.Database.Activities",
+        "Version": "1.2.6863.32528"
+      },
+      "Assemblies": [
+        "C:\\Users\\D.Drozdov\\.nuget\\packages\\uipath.database.activities/1.2.6863.32528\\lib/net40-Client/Microsoft.Data.ConnectionUI.Dialog.dll",
+        "C:\\Users\\D.Drozdov\\.nuget\\packages\\uipath.database.activities/1.2.6863.32528\\lib/net40-Client/UiPath.Database.Activities.Design.dll",
+        "C:\\Users\\D.Drozdov\\.nuget\\packages\\uipath.database.activities/1.2.6863.32528\\lib/net40-Client/UiPath.Database.Activities.dll",
+        "C:\\Users\\D.Drozdov\\.nuget\\packages\\uipath.database.activities/1.2.6863.32528\\lib/net40-Client/UiPath.Database.dll"
+      ]
     }
   ],
   "Conflicts": [],
@@ -215,6 +227,11 @@
     "UiPath": {
       "Id": "UiPath",
       "Version": "19.10.7243.31457",
+      "Dependencies": []
+    },
+    "UiPath.Database.Activities": {
+      "Id": "UiPath.Database.Activities",
+      "Version": "1.2.6863.32528",
       "Dependencies": []
     },
     "UiPath.Excel.Activities": {

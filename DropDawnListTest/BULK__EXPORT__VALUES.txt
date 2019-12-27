@@ -1,0 +1,37 @@
+If OBJECT_ID('tempdb..#T')    IS NOT NULL DROP TABLE #T
+
+CREATE TABLE #T(
+	semicolon1 nvarchar(50) NOT NULL,
+	semicolon2 nvarchar(50) NOT NULL,
+	semicolon3 nvarchar(50) NOT NULL,
+	semicolon4 nvarchar(50)  NULL,
+	semicolon5 nvarchar(50) NOT NULL,
+	semicolon6 nvarchar(50) NOT NULL,
+	semicolon7 nvarchar(30) NOT NULL,
+	semicolon8 nvarchar(MAX) NOT NULL
+)
+
+BULK INSERT #T
+FROM '\\Msk-kltn-dba053\exportvalue\ExportValue.csv'
+WITH(
+		DATAFILETYPE = 'widechar',
+		FIELDTERMINATOR = '\t',
+		ROWTERMINATOR = '\n',
+		FIRSTROW = 2
+)
+
+INSERT INTO dbo.ExportValues
+	SELECT 
+	REPLACE(semicolon1, '"', ''),
+	REPLACE(semicolon2, '"', ''),
+	REPLACE(semicolon3, '"', ''),
+	REPLACE(semicolon4, '"', ''),
+	REPLACE(semicolon5, '"', ''),
+	REPLACE(semicolon6, '"', ''),
+	REPLACE(semicolon7, '"', ''),
+	REPLACE(semicolon8, '"', '') 
+	From #T
+
+INSERT Into dbo.CheckExportValues (taskId)
+	Select REPLACE(semicolon1, '"', '') semicolon1
+	From #T
