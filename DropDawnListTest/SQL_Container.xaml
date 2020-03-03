@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SQL_Container" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="488,1239" sap2010:WorkflowViewState.IdRef="SQL_Container_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SQL_Container" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="488,1340" sap2010:WorkflowViewState.IdRef="SQL_Container_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="44">
+    <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -47,38 +47,43 @@
       <AssemblyReference>UiPath.Database</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SQL_Container" sap:VirtualizedContainerService.HintSize="468,1179" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SQL_Container" sap:VirtualizedContainerService.HintSize="468,1280" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="bulkSrtValue" />
       <Variable x:TypeArguments="x:String" Name="varResultSample" />
       <Variable x:TypeArguments="sd:DataTable" Name="resultSample" />
+      <Variable x:TypeArguments="x:String" Name="chechUid" />
+      <Variable x:TypeArguments="x:String" Name="checkProjectStatus" />
+      <Variable x:TypeArguments="x:String" Name="varCheckResult" />
+      <Variable x:TypeArguments="x:String" Name="checkUID" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[bulkSrtValue]" DisplayName="Read Text File" FileName="BULK__EXPORT__VALUES.txt" sap:VirtualizedContainerService.HintSize="426,132" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="426,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="System.Data.SqlClient" Sql="[bulkSrtValue]" ConnectionString="Data Source=msk-kltn-dba053;Initial Catalog=x5data;Integrated Security=True">
+    <ui:ReadTextFile Content="[bulkSrtValue]" DisplayName="Read_BULK_INFO_file" FileName="BULK__EXPORT__VALUES.txt" sap:VirtualizedContainerService.HintSize="426,132" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="BULK_INFO" sap:VirtualizedContainerService.HintSize="426,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="System.Data.SqlClient" Sql="[bulkSrtValue]" ConnectionString="Data Source=msk-kltn-dba053;Initial Catalog=x5data;Integrated Security=True">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="426,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" ProviderName="System.Data.SqlClient" Sql="WITH CTE AS&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;[Number] = IIF(LEN(SUBSTRING&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;detailedDescription,&#xA;&#x9;&#x9;&#x9;PATINDEX('%[0-9]%', detailedDescription),&#xA;&#x9;&#x9;&#x9;LEN(detailedDescription)&#xA;&#x9;&#x9;)) = 0, SUBSTRING(SUBSTRING&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;detailedDescription,&#xA;&#x9;&#x9;&#x9;PATINDEX('%[0-9]%', detailedDescription),&#xA;&#x9;&#x9;&#x9;LEN(detailedDescription)&#xA;&#x9;&#x9;), 0, PATINDEX('%[^0-9]%', SUBSTRING&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;detailedDescription,&#xA;&#x9;&#x9;&#x9;PATINDEX('%[0-9]%', detailedDescription),&#xA;&#x9;&#x9;&#x9;LEN(detailedDescription)&#xA;&#x9;&#x9;))), SUBSTRING&#xA;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;detailedDescription,&#xA;&#x9;&#x9;&#x9;PATINDEX('%[0-9]%', detailedDescription),&#xA;&#x9;&#x9;&#x9;LEN(detailedDescription)&#xA;&#x9;&#x9;)),&#xA;&#x9;&#x9;[taskId],&#xA;&#x9;&#x9;[detailedDescription]&#xA;&#x9;FROM x5data.dbo.ExportValues&#xA;)&#xA;UPDATE X&#xA;SET [objectUID] = CTE.[Number],&#xA;&#x9;[reason]    = 'удалить'&#xA;FROM CTE&#xA;JOIN  CheckExportValues X ON X.[taskId] = CTE.[taskId] AND CHARINDEX('удалить', CTE.[detailedDescription]) &gt; 0&#xA;WHERE LEN([Number]) &lt; 20" ConnectionString="Data Source=msk-kltn-dba053;Initial Catalog=x5data;Integrated Security=True">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="CheckUid" sap:VirtualizedContainerService.HintSize="426,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" ProviderName="System.Data.SqlClient" Sql="WITH CTE AS&#xA;(&#xA;&#x9;SELECT&#xA;&#x9;&#x9;[detailedDescription],&#xA;&#xA;       [Uid] = REVERSE(&#xA;              SUBSTRING(&#xA;                    REVERSE(&#xA;                           SUBSTRING(&#xA;                                  [detailedDescription],&#xA;                                  PATINDEX('%[0-9]%', [detailedDescription] ),&#xA;                                  LEN([detailedDescription]))),&#xA;                    PATINDEX('%[0-9]%',&#xA;                           REVERSE(&#xA;                                  SUBSTRING(&#xA;                                         [detailedDescription],&#xA;                                         PATINDEX('%[0-9]%', [detailedDescription] ),&#xA;                                         LEN([detailedDescription])))), &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;LEN([detailedDescription]))),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;[taskId]&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;FROM x5data.dbo.ExportValues&#xA;)&#xA;--SELECT * FROM CTE&#xA;&#xA;UPDATE X&#xA;SET [objectUID] = [Uid],&#xA;&#x9;[reason]    = 'удалить'&#xA;FROM CTE&#xA;JOIN  CheckExportValues X ON X.[taskId] = CTE.[taskId] AND CHARINDEX('удалить', CTE.[detailedDescription]) &gt; 0&#xA;WHERE LEN([Uid]) &lt; 20" ConnectionString="Data Source=msk-kltn-dba053;Initial Catalog=x5data;Integrated Security=True">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="426,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" ProviderName="System.Data.SqlClient" Sql="UPDATE CEV&#xA;&#x9;SET CEV.checkResult = (SELECT TOP 1 P.ASKO),&#xA;&#x9;&#x9;CEV.ASKO__STATUS = O.STATUS_ASKO&#xA;--SELECT TOP 1 CEV.taskId, CEV.objectUID, CEV.reason, CEV.checkResult, CEV.ASKO__STATUS, P.PROJECTUID, P.ASKO, O.OBJECTUID, O.STATUS_ASKO&#xA;FROM dbo.CheckExportValues AS CEV&#xA;JOIN dbo.PROJECT_STATUSES AS P ON CEV.objectUID = P.PROJECTUID AND P.ASKO !=0&#xA;JOIN dbo.OBJECTS AS O ON CEV.objectUID = O.OBJECTUID AND O.STATUS_ASKO = 'Слетел'" ConnectionString="Data Source=msk-kltn-dba053;Initial Catalog=x5data;Integrated Security=True">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="checkProjectStatus" sap:VirtualizedContainerService.HintSize="426,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" ProviderName="System.Data.SqlClient" Sql="UPDATE C&#xD;&#xA;&#x9;SET C.checkResult = (SELECT TOP 1 P.ASKO),&#xD;&#xA;&#x9;&#x9;C.ASKO__STATUS = O.STATUS_ASKO&#xD;&#xA;--SELECT C.taskId, C.objectUID, C.reason, C.checkResult, C.ASKO__STATUS, P.PROJECTUID, P.ASKO--, O.OBJECTUID, O.STATUS_ASKO&#xD;&#xA;&#xD;&#xA;FROM CheckExportValues C&#xD;&#xA;JOIN PROJECT_STATUSES P ON C.objectUID = P.PROJECTUID AND ASKO = 1&#xD;&#xA;JOIN OBJECTS O ON C.objectUID = O.OBJECTUID" ConnectionString="Data Source=msk-kltn-dba053;Initial Catalog=x5data;Integrated Security=True">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[resultSample]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="426,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" ProviderName="System.Data.SqlClient" Sql="SELECT taskId, checkResult&#xD;&#xA;&#x9;FROM dbo.CheckExportValues&#xD;&#xA;&#x9;WHERE reason = 'удалить' AND checkResult = 1 AND ASKO__STATUS IS NULL" ConnectionString="Data Source=msk-kltn-dba053;Initial Catalog=x5data;Integrated Security=True">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[resultSample]" DisplayName="checkResult" sap:VirtualizedContainerService.HintSize="426,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" ProviderName="System.Data.SqlClient" Sql="SELECT taskId, checkResult&#xA;&#x9;FROM dbo.CheckExportValues&#xA;&#x9;WHERE reason = 'удалить' AND checkResult = 1 AND ASKO__STATUS IS NULL" ConnectionString="Data Source=msk-kltn-dba053;Initial Catalog=x5data;Integrated Security=True">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="426,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[resultSample.ToString]" />
     <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[resultSample]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="426,403" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">

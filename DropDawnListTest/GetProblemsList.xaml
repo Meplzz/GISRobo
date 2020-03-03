@@ -9,7 +9,7 @@
   <sap:VirtualizedContainerService.HintSize>558,3249</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="44">
+    <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -36,7 +36,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -66,6 +66,7 @@
       <Variable x:TypeArguments="ui:GenericValue" Name="checkLastFile" />
       <Variable x:TypeArguments="x:String" Name="GetOutCode" />
       <Variable x:TypeArguments="sd:DataTable" Name="saveCsvToXlsx" />
+      <Variable x:TypeArguments="x:String" Name="varLastFile" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -448,7 +449,7 @@
         </ui:Target>
       </ui:Click.Target>
     </ui:Click>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="// путь к папке&#xA;            string Folder = @&quot;C:\Users\D.Drozdov\Downloads\&quot;;&#xA;            var files = new DirectoryInfo(Folder).GetFiles(&quot;*.*&quot;);&#xA;            string latestfile = &quot;&quot;;&#xA;&#xA;            DateTime lastupdated = DateTime.MinValue;&#xA;&#xA;            foreach (FileInfo file in files)&#xA;            {&#xA;                if(file.LastWriteTime &gt; lastupdated)&#xA;                {&#xA;                    lastupdated = file.LastWriteTime;&#xA;                    latestfile = file.FullName;&#xA;                }&#xA;            }&#xA;            Console.WriteLine(latestfile);&#xA;            Console.ReadLine();&#xA;&#x9;&#x9;&#x9;test = latestfile;" DisplayName="CheckLastDownloadFile" sap:VirtualizedContainerService.HintSize="496,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="// путь к папке&#xD;&#xA;            string Folder = @&quot;C:\Users\D.Drozdov\Downloads\&quot;;&#xD;&#xA;            var files = new DirectoryInfo(Folder).GetFiles(&quot;*.*&quot;);&#xD;&#xA;            string latestfile = &quot;&quot;;&#xD;&#xA;&#xD;&#xA;            DateTime lastupdated = DateTime.MinValue;&#xD;&#xA;&#xD;&#xA;            foreach (FileInfo file in files)&#xD;&#xA;            {&#xD;&#xA;                if(file.LastWriteTime &gt; lastupdated)&#xD;&#xA;                {&#xD;&#xA;                    lastupdated = file.LastWriteTime;&#xD;&#xA;                    latestfile = file.FullName;&#xD;&#xA;                }&#xD;&#xA;            }&#xD;&#xA;            Console.WriteLine(latestfile);&#xD;&#xA;            Console.ReadLine();&#xD;&#xA;&#x9;&#x9;&#x9;test = latestfile;&#xD;&#xA;                " DisplayName="CheckLastDownloadFile" sap:VirtualizedContainerService.HintSize="496,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
       <ui:InvokeCode.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="test">[GetOutCode]</OutArgument>
       </ui:InvokeCode.Arguments>

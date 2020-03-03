@@ -1,0 +1,18 @@
+// путь к папке
+            string Folder = @"C:\Users\D.Drozdov\Downloads\";
+            var files = new DirectoryInfo(Folder).GetFiles("*.*");
+            string latestfile = "";
+
+            DateTime lastupdated = DateTime.MinValue;
+
+            foreach (FileInfo file in files)
+            {
+                if(file.LastWriteTime > lastupdated)
+                {
+                    lastupdated = file.LastWriteTime;
+                    latestfile = file.FullName;
+                }
+            }
+            Console.WriteLine(latestfile);
+            Console.ReadLine();
+			test = latestfile;

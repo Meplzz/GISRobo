@@ -1,0 +1,3 @@
+SELECT taskId, checkResult
+	FROM dbo.CheckExportValues
+	WHERE reason = 'удалить' AND checkResult = 1 AND ASKO__STATUS IS NULL

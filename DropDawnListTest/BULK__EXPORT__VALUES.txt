@@ -29,7 +29,7 @@ INSERT INTO dbo.ExportValues
 	REPLACE(semicolon5, '"', ''),
 	REPLACE(semicolon6, '"', ''),
 	REPLACE(semicolon7, '"', ''),
-	REPLACE(semicolon8, '"', '') 
+	REPLACE(REPLACE(semicolon8, '"', ''), char(10), '') 
 	From #T
 
 INSERT Into dbo.CheckExportValues (taskId)

@@ -1,0 +1,31 @@
+WITH CTE AS
+(
+	SELECT
+		[detailedDescription],
+
+       [Uid] = REVERSE(
+              SUBSTRING(
+                    REVERSE(
+                           SUBSTRING(
+                                  [detailedDescription],
+                                  PATINDEX('%[0-9]%', [detailedDescription] ),
+                                  LEN([detailedDescription]))),
+                    PATINDEX('%[0-9]%',
+                           REVERSE(
+                                  SUBSTRING(
+                                         [detailedDescription],
+                                         PATINDEX('%[0-9]%', [detailedDescription] ),
+                                         LEN([detailedDescription])))), 
+					LEN([detailedDescription]))),
+					[taskId]
+					
+	FROM x5data.dbo.ExportValues
+)
+--SELECT * FROM CTE
+
+UPDATE X
+SET [objectUID] = [Uid],
+	[reason]    = 'удалить'
+FROM CTE
+JOIN  CheckExportValues X ON X.[taskId] = CTE.[taskId] AND CHARINDEX('удалить', CTE.[detailedDescription]) > 0
+WHERE LEN([Uid]) < 20
